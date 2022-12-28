@@ -1,5 +1,6 @@
 package calender;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class Prompt {
@@ -14,17 +15,17 @@ public class Prompt {
 	
 	public void runPrompt() {
 		Scanner sc = new Scanner(System.in);
+		Plan p = new Plan();
 		String cmd;
 		
+	outer: while(true) {
 		printMenu();
 		System.out.println("명령 (1, 2, 3, h, q)");
 		System.out.print("> ");
 		cmd = sc.next();
-		
-	outer: while(true) {
 			switch(cmd) {
-			case "1": cmdRegister(); break;
-			case "2": cmdSearch(); break;
+			case "1": cmdRegister(sc, p); break;
+			case "2": cmdSearch(sc, p); break;
 			case "3": cmdPrintCal(sc); break;
 			case "h": printMenu();
 			case "q": break outer;
@@ -33,17 +34,29 @@ public class Prompt {
 	System.out.println("Thank you, good bye~");
 	}
 	
+	// 일정 등록 
+	private void cmdRegister(Scanner sc, Plan p) {
+		
+		
+		System.out.println("[일정 등록]");
+		System.out.println("날짜를 입력하세요. (yyyy-MM-dd)");
+		System.out.print("> ");
+		String strDate = sc.next();
+		Date date = StrDateToInt.strDateToInt(strDate);
+		sc.nextLine();
+		System.out.println("일정을 입력하세요.");
+		String plan = sc.nextLine();
+		
+		p.registerPlan(date, plan);		
+	}
+
+	// 일정 검색
+	private void cmdSearch(Scanner sc, Plan p) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-
-	private void cmdSearch() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void cmdRegister() {
-		// TODO Auto-generated method stub
-		
-	}
+	// 달력 보기
 	private void cmdPrintCal(Scanner sc) {
 		PrintCalender cal = new PrintCalender();
 		
