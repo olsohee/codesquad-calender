@@ -49,13 +49,23 @@ public class Prompt {
 		
 		int year; int month; int weekday;
 		
-		System.out.println("연도를 입력하세요.");
-		System.out.print("> ");
-		year = sc.nextInt();
+		while(true) {
+			System.out.println("연도를 입력하세요.");
+			System.out.print("> ");
+			year = sc.nextInt();
+			if(year > 0)
+				break;
+			System.out.println("잘못된 입력입니다.");
+		}
 		
+		while (true){
 		System.out.println("달을 입력하세요.");
 		System.out.print("> ");
 		month = sc.nextInt();
+		if(month >= 1 && month <= 12) 
+			break;
+		System.out.println("잘못된 입력입니다.");
+		}
 		
 		weekday = cal.getWeekday(year, month);
 				
