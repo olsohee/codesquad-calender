@@ -9,6 +9,10 @@ public class Plan {
 	public void registerPlan(Date date, String plan) {
 		map.put(date, plan);
 	}
+
+	public String searchPlan(Date date) {
+		return map.get(date);
+	}
 	
 
 }

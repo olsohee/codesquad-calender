@@ -27,7 +27,7 @@ public class Prompt {
 			case "1": cmdRegister(sc, p); break;
 			case "2": cmdSearch(sc, p); break;
 			case "3": cmdPrintCal(sc); break;
-			case "h": printMenu();
+			case "h": printMenu(); break;
 			case "q": break outer;
 			}
 		}
@@ -36,8 +36,6 @@ public class Prompt {
 	
 	// 일정 등록 
 	private void cmdRegister(Scanner sc, Plan p) {
-		
-		
 		System.out.println("[일정 등록]");
 		System.out.println("날짜를 입력하세요. (yyyy-MM-dd)");
 		System.out.print("> ");
@@ -52,8 +50,14 @@ public class Prompt {
 
 	// 일정 검색
 	private void cmdSearch(Scanner sc, Plan p) {
-		// TODO Auto-generated method stub
+		System.out.println("[일정 검색]");
+		System.out.println("날짜를 입력하세요. (yyyy-MM-dd)");
+		System.out.print("> ");
+		String strDate = sc.next();
+		Date date = StrDateToInt.strDateToInt(strDate);
 		
+		String plan = p.searchPlan(date);
+		System.out.println(plan);
 	}
 	
 	// 달력 보기
