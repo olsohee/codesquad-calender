@@ -4,13 +4,15 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Plan {
-	HashMap<Date, String> map = new HashMap<>();;
+	HashMap<Date, PlanItem> map = new HashMap<>();;
 	
-	public void registerPlan(Date date, String plan) {
-		map.put(date, plan);
+	public void registerPlan(String strDate, String plan) {
+		PlanItem p = new PlanItem(strDate, plan);
+		map.put(p.getDate(), p);
 	}
 
-	public String searchPlan(Date date) {
+	public PlanItem searchPlan(String strDate) {
+		Date date = PlanItem.getDatefromString(strDate);
 		return map.get(date);
 	}
 	

@@ -40,12 +40,11 @@ public class Prompt {
 		System.out.println("날짜를 입력하세요. (yyyy-MM-dd)");
 		System.out.print("> ");
 		String strDate = sc.next();
-		Date date = StrDateToInt.strDateToInt(strDate);
 		sc.nextLine();
 		System.out.println("일정을 입력하세요.");
 		String plan = sc.nextLine();
 		
-		p.registerPlan(date, plan);		
+		p.registerPlan(strDate, plan);		
 	}
 
 	// 일정 검색
@@ -54,10 +53,9 @@ public class Prompt {
 		System.out.println("날짜를 입력하세요. (yyyy-MM-dd)");
 		System.out.print("> ");
 		String strDate = sc.next();
-		Date date = StrDateToInt.strDateToInt(strDate);
 		
-		String plan = p.searchPlan(date);
-		System.out.println(plan);
+		PlanItem plan = p.searchPlan(strDate);
+		System.out.println(plan.getPlan());
 	}
 	
 	// 달력 보기
